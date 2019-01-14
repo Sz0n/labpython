@@ -1,0 +1,51 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+    <span class="badge badge-pill"><a style="color:white" href="{{ url_for('index') }}">Posts</a></span>
+
+    <style type="text/css">
+        .form-control{
+            width: 50%;
+        }
+        .badge{
+            background-color: #337ab7
+        }
+    </style>
+<center>
+    <span class="badge badge-pill badge-primary"><h3>Register</h3></span>
+   
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=64) }}<br>
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}<br>
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password2.label }}<br>
+            {{ form.password2(size=32) }}<br>
+            {% for error in form.password2.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p><button type="submit" class="btn btn-primary">Register</button></p>
+        <!--<p>{{ form.submit() }}</p>-->
+    </form>
+</center>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+<nav>
+	{% if current_user.is_anonymous %}
+	<span class="badge badge-pill"><a style="color:white" href="{{ url_for('index') }}">Posts</a></span>
+	<!--<a href="{{ url_for('index') }}">Posts</a>-->	
+    {% else %}
+    <span class="badge badge-pill"><a style="color:white" href="{{ url_for('add_post') }}">Add post</a></span>
+    <span class="badge badge-pill"><a style="color:white" href="{{ url_for('logout') }}">Logout</a></span>
+    <!--<a href="{{ url_for('add_post') }}">Add post</a>
+    <a href="{{ url_for('logout') }}">Logout</a>-->
+    {% endif %}
+</nav>
+   <center>
+   	<span class="badge badge-pill badge-primary"><h3>Add post</h3></span>
+
+	<style type="text/css">
+		.form-control{
+			width: 50%;
+		}
+		.badge{
+			background-color: #337ab7
+		}
+	</style>
+
+	<form action="" method="post" novalidate>
+		{{ form.hidden_tag() }}
+		<p>
+			{{ form.username.label }}<br>
+			{{ form.username(size=32) }}<br>
+			{% for error in form.username.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<p>
+			{{ form.password.label }}<br>
+			{{ form.password(size=32) }}<br>
+			{% for error in form.password.errors %}
+			<span style="color: red;">[{{ error }}]</span>
+			{% endfor %}
+		</p>
+		<!--<p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>-->
+		<p><button type="submit" class="btn btn-primary">Sign In</button></p>
+		<!--<p>{{ form.submit() }}</p>-->
+	</form>
+	<p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+	</center>
+{% endblock%}

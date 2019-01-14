@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ title }}</title>
+<nav>
+	{% if current_user.is_anonymous %}
+	<a href="{{ url_for('login') }}">Login</a>
+    {% else %}
+    <a href="{{ url_for('add_post') }}">Add post</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    {% endif %}
+</nav>
+<hr>
+<style type="text/css">
+	body {
+		background-color: blue;
+	}
+
+	#post-container {
+		background-color: grey;
+		text-align: center;
+	}
+
+	#post-title {
+		color: white;
+	}
+
+	#post-content {
+		background-color: orange;
+	}
+
+	.form-control{
+		width: 50%;
+	}
+	.badge{
+		background-color: #337ab7
+	}
+	a {
+		color: black;
+		background-color: orange;
+	}
+
+
+</style>
+</head>
+<body>
+
+{% block content %}
+<div id="post-container">
+
+{% for p in posts %}
+	<div id="post-title">
+		<h1>{{ p.title }}</h1>
+	</div>
+	<div id="post-content">
+		{{ p.content }}
+	</div>
+<hr>
+{% endfor %}
+</div>
+
+{% endblock %}
+
+
+</body>
+</html>

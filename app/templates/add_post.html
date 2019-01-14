@@ -1,0 +1,52 @@
+{% extends "bootstrap/base.html" %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add post</title>
+</head>
+<body>
+	{% block content %}
+<!-- 	<a href="{{ url_for('index') }}"><u>Back</u></a>
+ --><!-- 	<span class="badge badge-pill badge-primary">Primary</span>
+<span class="badge badge-pill badge-secondary">Secondary</span>
+<span class="badge badge-pill badge-success">Success</span>
+<span class="badge badge-pill badge-danger">Danger</span>
+<span class="badge badge-pill badge-warning">Warning</span>
+<span class="badge badge-pill badge-info">Info</span>
+<span class="badge badge-pill badge-light">Light</span>
+<span class="badge badge-pill badge-dark">Dark</span>
+-->
+<center>
+	<span class="badge badge-pill badge-primary"><h3>Add post</h3></span>
+	
+	<style type="text/css">
+		.form-control{
+			width: 50%;
+		}
+		.badge{
+			background-color: #337ab7
+		}
+		a{
+			color: #f5f5f5
+		}
+	</style>
+
+<form action="" method="post">
+	
+	<p> {{ form.title.label }}
+		{{ form.title(class_="form-control", placeholder="Title") }}</p>
+	
+	<p>{{ form.content.label }}
+		{{ form.content(class_="form-control", cols="60", rows="10", placeholder="Content") }}</p>
+	
+	<p><button type="submit" class="btn btn-primary">Add</button></p>
+	<!--{{ form.submit() }}-->
+</form>
+</center>
+	<span class="badge badge-pill"><a href="{{ url_for('index') }}">Back</a></span>
+{% endblock %}
+
+</body>
+
+</html>
