@@ -32,7 +32,8 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = LoginForm()
-    if form.validate_on_submit():
+    #if form.validate_on_submit():
+    if request.method == "POST":
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
@@ -70,6 +71,3 @@ def register():
         flash('Registered')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
-
-
-    
