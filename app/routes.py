@@ -70,3 +70,6 @@ def register():
         flash('Registered')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
+
+
+    
